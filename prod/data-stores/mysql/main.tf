@@ -1,5 +1,5 @@
 module "database" {
-  source = "../../../modules/data-stores/mysql"
+  source = "github.com/fionn/tfuar-modules//data-stores/mysql?ref=v0.0.1"
 
   db_name     = "prod"
   db_password = var.db_password
