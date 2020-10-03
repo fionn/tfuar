@@ -1,5 +1,5 @@
 provider "aws" {
-  region = "ap-northeast-1"
+  region  = "ap-northeast-1"
   version = "~> 3.6.0"
 }
 
@@ -10,12 +10,12 @@ variable "user_names" {
 }
 
 resource "aws_iam_user" "example" {
-  count = length(var.user_names)
-  name  = var.user_names[count.index]
+  for_each = toset(var.user_names)
+  name     = each.value
 }
 
 output "all_arns" {
-  value = aws_iam_user.example[*].arn
+  value       = values(aws_iam_user.example)[*].arn
   description = "The ARNs for all users"
 }
 
