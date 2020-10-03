@@ -1,6 +1,6 @@
 provider "aws" {
   region  = "ap-northeast-1"
-  version = "~> 3.6.0"
+  version = "~> 3.9.0"
 }
 
 resource "aws_s3_bucket" "terraform_state" {

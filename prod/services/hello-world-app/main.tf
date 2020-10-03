@@ -1,10 +1,8 @@
-module "webserver_cluster" {
-  source = "github.com/fionn/tfuar-modules//services/webserver-cluster?ref=v0.0.6"
+module "hello_world_app" {
+  source = "github.com/fionn/tfuar-modules//modules/services/hello-world-app?ref=v0.0.7"
 
-  ami         = "ami-06f0013cbb22c8dd3"
-  server_text = "foo bar"
-
-  cluster_name           = "webservers-prod"
+  server_text            = "Hello, World"
+  environment            = "prod"
   db_remote_state_bucket = "terraform-state-tfuar"
   db_remote_state_key    = "prod/data-stores/mysql/terraform.tfstate"
 
@@ -22,7 +20,7 @@ module "webserver_cluster" {
 terraform {
   backend "s3" {
     bucket         = "terraform-state-tfuar"
-    key            = "prod/services/webserver-cluster/terraform.tfstate"
+    key            = "prod/services/hello-world-app/terraform.tfstate"
     region         = "ap-northeast-1"
     dynamodb_table = "terraform-up-and-running-locks"
     encrypt        = true

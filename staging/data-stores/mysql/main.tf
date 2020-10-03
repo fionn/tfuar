@@ -1,7 +1,8 @@
 module "database" {
-  source = "github.com/fionn/tfuar-modules//data-stores/mysql?ref=v0.0.1"
+  source = "github.com/fionn/tfuar-modules//modules/data-stores/mysql?ref=v0.0.7"
 
   db_name     = "staging"
+  db_username = "admin"
   db_password = var.db_password
 }
 
